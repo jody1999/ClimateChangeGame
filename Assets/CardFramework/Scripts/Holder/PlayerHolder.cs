@@ -8,12 +8,12 @@ namespace SA
     public class PlayerHolder : ScriptableObject {
 
         public string[] startingCards;
-        public SO.TransformVariable handGrind;
-        public SO.TransformVariable downGrind;
+        //public SO.TransformVariable handGrind;
+        //public SO.TransformVariable downGrind;
 
-        [System.NonSerialized]
-        public List<CardInstance> handCards = new List<CardInstance>();
-        [System.NonSerialized]
-        public List<CardInstance> cardsDown = new List<CardInstance>();
+        //[System.NonSerialized]
+        //public List<CardInstance> handCards = new List<CardInstance>();
+        //[System.NonSerialized]
+        //public List<CardInstance> cardsDown = new List<CardInstance>();
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace SA
 {
-    public class CardViz : ScriptableObject
+    public class CardViz : MonoBehaviour
     {
         public Text title;
         public Text details;
@@ -34,6 +34,20 @@ namespace SA
             if (c == null)
             {
                 return;
+            }
+
+            card = c;
+            title.text = c.cardName;
+            details.text = c.cardDetails;
+
+            if (string.IsNullOrEmpty(c.cardFlavour))
+            {
+                flavor.gameObject.SetActive(false);
+            }
+            else
+            {
+                flavor.gameObject.SetActive(true);
+                flavor.text = c.cardFlavour;
             }
 
 

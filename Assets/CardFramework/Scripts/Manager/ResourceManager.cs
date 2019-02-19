@@ -7,7 +7,7 @@ namespace SA
     [CreateAssetMenu(menuName ="Managers/Resource Manager")]
     public class ResourcesManager : ScriptableObject
     {
-        public Element typeElement;
+        //public Element typeElement;
         public Card[] allCards;
         Dictionary<string, Card> cardsDict = new Dictionary<string, Card>();
 
@@ -16,11 +16,11 @@ namespace SA
             cardsDict.Clear();
             for (int i = 0; i < allCards.Length; i++)
             {
-                cardsDict.Add(allCards[i].index, allCards[i]);
+                //cardsDict.Add(allCards[i].index, allCards[i]);
             }
         }
 
-        public Card GetCardInstance(stirng id)
+        public Card GetCardInstance(string id)
         {
             Card originalCard = GetCard(id);
             if(originalCard == null)
