@@ -14,6 +14,7 @@ namespace SA
         public void CardIsDroppedDown(int instId, int playerId )
         {
             NetworkManager.singleton.GetCard(instId,playerId);
+
         }
 
         //Event of Drawing card from deck
