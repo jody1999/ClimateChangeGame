@@ -25,6 +25,9 @@ namespace SA
         {
             LoadCard(card);
             //Need to have card prefabs in the prefabs folder
+
+        
+             
         }
 
 
@@ -35,6 +38,8 @@ namespace SA
             {
                 return;
             }
+
+            c.cardViz = this;
 
             card = c;
             title.text = c.cardName;

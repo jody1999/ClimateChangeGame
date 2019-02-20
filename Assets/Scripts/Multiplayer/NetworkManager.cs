@@ -60,6 +60,7 @@ namespace SA
                 if (c == null) { continue; }
                 m.RegisterCard(c);
                 //RPC into client
+                // Creating Starting Hand
             }
     
 
