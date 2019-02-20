@@ -18,15 +18,15 @@ namespace SA
 
         void CreateStartingCards()
         {
-            //ResourcesManager rm = Settings.GetResourceManager();
+            ResourcesManager rm = Settings.GetResourcesManager();
 
-            /*for(int i = 0; i < currentPlayer.startingCards.Length; zi++)
+            for(int i = 0; i < currentPlayer.startingCards.Length; zi++)
             {
                 GameObject go = Instantiate(cardPrefab) as GameObject;
                 CardViz v = go.GetComponent<CardViz>();
                 v.LoadCard(rm.GetCardInstance(currentPlayer.startingCards[i]));
                 Settings.SetParentForCard(go.transform, currentPlayer.handGrid.value);
-            }*/
+            }
         }
 
         private void Update()
