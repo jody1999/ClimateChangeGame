@@ -17,6 +17,7 @@ namespace SA
         public string cardDetails; //Card Effects
         public string cardFlavour; //Card Details
         public string source; // Crediting the source of the card art
-         
+        [System.NonSerialized]
+        public int instId;
     }
 }
