@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
 
 namespace SA
 {
-    public class NetworkManager : MonoBehaviour
+    public class NetworkManager : Photon.PunBehaviour
     {
         public bool isMaster; // No need to check --> 1 v 1
 
@@ -37,6 +37,13 @@ namespace SA
 
         int cardInstanceIDs;
 
+
+        public StringVariable logger; // Need Scriptable object library
+        public GameEvent onConnected;
+        public GameEvent failedToConnect;
+        public GameEvent loggerUpdated;
+
+
         private void Awake()
         {
             if (singleton == null)
@@ -48,7 +55,40 @@ namespace SA
             else { Destroy(this.gameObject); }
         }
 
+        private void Start()
+        {
+            PhotonNetwork.autoCleanUpPlayerObjects = false;
+            PhotonNetwork.autoJoinLobby = false;
+            PhotonNetwork.automaticallySyncScene = false;
+            Init();
+            
+
+        }
+
+        public void Init()
+        {
+            PhotonNetwork.ConnectUsingSettings("1"); // Connect to the network
+            logger.value = "Connecting"; // Logger
+            loggerUpdated.Raise();
+        }
+
         #region My Calls
+
+        public void CreateRoom()
+        {
+            RoomOptions room = new RoomOptions();
+            room.MaxPlayers = 2;
+            PhotonNetwork.CreateRoom("Room 1", room, TypedLobby.Default);
+        }
+        private System.Random random = new System.Random();
+
+        public string RandomString(int length)
+        {
+            const string chars = "";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         //Master Only
         public void PlayerJoined(int photonId, string [] cards)
         {
@@ -97,6 +137,46 @@ namespace SA
 
         //Calling Player ID
         #region PhotonCallbacks 
+
+        public override void OnConnectedToMaster()
+        {
+            base.OnConnectedToMaster();
+            logger.value = "Connected";
+            loggerUpdated.Raise();
+            onConnected.Raise();
+        }
+        public override void OnFailedToConnectToPhoton(DisconnectCause cause)
+        {
+            base.OnFailedToConnectToPhoton(cause);
+            logger.value = "Failed to Connect";
+            loggerUpdated.Raise();
+            failedToConnect.Raise();
+        }
+
+        //Overriding the failed random join room.
+        public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
+        {
+            base.OnPhotonRandomJoinFailed(codeAndMsg);
+        }
+        public override void OnCreatedRoom()
+        {
+            base.OnCreatedRoom();
+        }
+
+        public override void OnJoinedRoom()
+        {
+            base.OnJoinedRoom();
+        }
+
+        public override void OnDisconnectedFromPhoton()
+        {
+            base.OnDisconnectedFromPhoton();
+        }
+
+        public override void OnLeftRoom()
+        {
+            base.OnLeftRoom();
+        }
         #endregion
 
 
