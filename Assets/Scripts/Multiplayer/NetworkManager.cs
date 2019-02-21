@@ -78,13 +78,13 @@ namespace SA
         {
             RoomOptions room = new RoomOptions();
             room.MaxPlayers = 2;
-            PhotonNetwork.CreateRoom("Room 1", room, TypedLobby.Default);
+            PhotonNetwork.CreateRoom(RandomString(256 ), room, TypedLobby.Default);
         }
         private System.Random random = new System.Random();
 
         public string RandomString(int length)
         {
-            const string chars = "";
+            const string chars = "";//Add random string here
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
