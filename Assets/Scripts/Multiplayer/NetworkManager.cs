@@ -73,6 +73,17 @@ namespace SA
         }
 
         #region My Calls
+        public void OnPlayGame()
+        {
+            JoinRandomRoom(); // JOIN  A RANDOM ROOM TO START PLAYING BY CALLING JoinRandomRoom method.
+
+        }
+        void JoinRandomRoom()
+
+        {
+
+            PhotonNetwork.JoinRandomRoom();
+        }
 
         public void CreateRoom()
         {
@@ -157,6 +168,7 @@ namespace SA
         public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
         {
             base.OnPhotonRandomJoinFailed(codeAndMsg);
+            CreateRoom();
         }
         public override void OnCreatedRoom()
         {
