@@ -42,6 +42,7 @@ namespace SA
         public GameEvent onConnected;
         public GameEvent failedToConnect;
         public GameEvent loggerUpdated;
+        public GameEvent waitingForPlayer;
 
 
         private void Awake()
@@ -173,11 +174,30 @@ namespace SA
         public override void OnCreatedRoom()
         {
             base.OnCreatedRoom();
+            isMaster = true;
         }
 
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
+        }
+        public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+        {
+            if (isMaster)
+            {
+                if (PhotonNetwork.playerList.Length > 1)
+                {
+                    //Can Start the game
+
+
+                }
+                else
+                {
+                    logger.value = "Still Alone";
+                    loggerUpdated.Raise();
+                    waitingForPlayer.Raise();
+                }
+            }
         }
 
         public override void OnDisconnectedFromPhoton()
