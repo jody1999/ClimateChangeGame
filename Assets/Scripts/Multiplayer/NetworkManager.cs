@@ -196,6 +196,7 @@ namespace SA
                     logger.value = "Still Alone";
                     loggerUpdated.Raise();
                     waitingForPlayer.Raise();
+
                 }
             }
         }
