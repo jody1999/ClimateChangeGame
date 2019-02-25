@@ -11,6 +11,9 @@ namespace SA
         //public SO.TransformVariable handGrind;
         //public SO.TransformVariable downGrind;
 
+        public GE_Logic handLogic;
+        public GE_Logic downLogic;
+
         //[System.NonSerialized]
         //public List<CardInstance> handCards = new List<CardInstance>();
         //[System.NonSerialized]
