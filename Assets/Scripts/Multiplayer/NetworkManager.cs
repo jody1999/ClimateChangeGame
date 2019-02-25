@@ -194,7 +194,8 @@ namespace SA
                     //Get Log value first
                     logger.value = "READY FOR MATCH";
                     loggerUpdated.Raise();
-                    SessionManager.singleton.LoadGameLevel();
+                    PhotonNetwork.room.IsOpen = false;
+                    //SessionManager.singleton.LoadGameLevel(); // Create Game Session for the players
                 }
             }
         }
