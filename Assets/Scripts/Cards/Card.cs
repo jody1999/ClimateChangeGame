@@ -17,6 +17,16 @@ namespace SA
         public string cardDetails; //Card Effects
         public string cardFlavour; //Card Details
         public string source; // Crediting the source of the card art
-         
+        [System.NonSerialized]
+        public CardViz cardViz;
+         [System.NonSerialized]
+        public int instId;
+        //public CardType cardType;
+        public int cost;
+        //public CardProperties[] properties;
+        //public CardProperties GetProperty(Element e)
+        //{
+
+        //}
     }
 }
