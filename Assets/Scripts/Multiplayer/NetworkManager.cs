@@ -195,9 +195,16 @@ namespace SA
                     logger.value = "READY FOR MATCH";
                     loggerUpdated.Raise();
                     PhotonNetwork.room.IsOpen = false;
-                    //SessionManager.singleton.LoadGameLevel(); // Create Game Session for the players
+                    PhotonNetwork.Instantiate("MultiplayerManager", Vector3.zero, Quaternion.identity, 0 );
+                    //SessionManager.singleton.LoadGameLevel(OnGameSceneLoaded); // Create Game Session for the players
                 }
             }
+        }
+
+
+        void OnGameSceneLoaded()
+        {
+            
         }
 
         public override void OnDisconnectedFromPhoton()

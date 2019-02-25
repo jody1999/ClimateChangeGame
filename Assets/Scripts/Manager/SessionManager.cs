@@ -25,14 +25,18 @@ namespace SA
                 Destroy(this.gameObject);
             }
         }
-        public void LoadGameLevel()
+        public void LoadGameLevel(OnSceneLoaded callback)
         {
-            StartCoroutine("menu");
+            onSceneLoaded = callback;
+
+            StartCoroutine("scene1");
 
         }
 
         public void LoadMenu()
-        { }
+        {
+            StartCoroutine("menu");
+        }
         IEnumerator LoadLevel(string level)
         {
             yield return SceneManager.LoadSceneAsync(level, LoadSceneMode.Single);
