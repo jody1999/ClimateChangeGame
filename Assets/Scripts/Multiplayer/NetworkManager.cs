@@ -180,6 +180,9 @@ namespace SA
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
+            logger.value = "Still Alone";
+            loggerUpdated.Raise();
+            waitingForPlayer.Raise();
         }
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
         {
@@ -188,15 +191,10 @@ namespace SA
                 if (PhotonNetwork.playerList.Length > 1)
                 {
                     //Can Start the game
-
-
-                }
-                else
-                {
-                    logger.value = "Still Alone";
+                    //Get Log value first
+                    logger.value = "READY FOR MATCH";
                     loggerUpdated.Raise();
-                    waitingForPlayer.Raise();
-
+                    SessionManager.singleton.LoadGameLevel();
                 }
             }
         }
