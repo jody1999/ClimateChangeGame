@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SA
 {
-    [CreateAssetMenu(menuName ="Turns/Turn"]
+    [CreateAssetMenu(menuName ="Turns/Turn")]
     public class Turn : ScriptableObject
     {
         [System.NonSerialized]

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SA
 {
-    [CreateAssetMenu(menuName ="Turns/Battle Phase Player"]
+    [CreateAssetMenu(menuName ="Turns/Battle Phase Player")]
     public class BattlePhase : Phase
     {
         public override bool IsComplete()
